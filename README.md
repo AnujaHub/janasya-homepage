@@ -1,52 +1,79 @@
-Janasya Website Redesign (UI/UX Enhancement Proposal)
+# Janasya Website Redesign (UI/UX Enhancement Proposal)
 
-A redesigned homepage concept for Janasya, created as part of an industry project. The objective was to improve SEOS and the browsing experience while preserving the brand's existing identity and visual language.
+A redesigned homepage concept for **Janasya**, created as part of an industry project.
 
-Project Overview
+The objective of this project was to improve the website's **user experience** and implement **basic SEO enhancements** while preserving Janasya's existing brand identity and visual language.
 
-This redesign focuses on refining the existing user experience rather than rebranding the website. The proposed improvements aim to enhance navigation, usability, inclusivity, trust, and overall customer engagement.
+---
 
-Key Improvements
-Improved homepage layout and visual hierarchy
-Moved the Trust section higher for better visibility
-Enhanced navigation with a more accessible search option
-Redesigned "Shop from Instagram" into an interactive gallery
-Added an FAQ section to answer common customer questions
-Added a Back-to-Top button for easier navigation
-Improved spacing, typography, and overall UI consistency
-Updated images to create a more diverse browsing experience
-Basic SEO improvements including descriptive alt text and content organization
-SEO Work
+## Project Overview
 
-A structured keyword clustering exercise was completed to improve content organization.
+This redesign focuses on refining the existing customer experience rather than rebranding the website. The proposed improvements aim to enhance navigation, usability, accessibility, trust, and overall engagement while maintaining the brand's premium aesthetic.
 
-Workflow
-Brand Research
-Competitor Analysis
-Keyword Collection
-Keyword Clustering
-Mapping Keywords to Relevant Pages
-Final Review & Refinement
-Tech Stack
-React
-TypeScript
-Vite
-Tailwind CSS
-Lucide React
-Project Structure
+---
+
+## Key Improvements
+
+- Improved homepage layout and visual hierarchy
+- Moved the **Trust Section** higher for better visibility
+- Enhanced navigation with a more accessible search option
+- Redesigned the **"Shop from Instagram"** section into an interactive gallery
+- Added an **FAQ section** to address common customer queries
+- Added a **Back-to-Top** button for improved navigation
+- Improved spacing, typography, and overall UI consistency
+- Updated imagery to create a more diverse and inclusive browsing experience
+- Implemented basic SEO improvements including descriptive image alt text and better content organization
+
+---
+
+## SEO Work
+
+A structured keyword clustering exercise was carried out to improve website content organization.
+
+### Workflow
+
+1. Brand Research
+2. Competitor Analysis
+3. Keyword Collection
+4. Keyword Clustering
+5. Mapping Keywords to Relevant Pages
+6. Final Review & Refinement
+
+---
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React
+
+---
+
+## Project Structure
+
+```text
 src/
- ├── components/
- ├── data/
- ├── hooks/
- ├── imports/
- ├── types/
- ├── utils/
- └── App.tsx
+├── components/
+├── data/
+├── hooks/
+├── imports/
+├── types/
+├── utils/
+└── App.tsx
+```
 
-Disclaimer!!
+---
 
-This project was created solely for educational and portfolio purposes as part of an industry project. Janasya logos, branding, product images, and related assets belong to their respective owners. This repository is not affiliated with or endorsed by Janasya.
+## Disclaimer
 
-Author
+This project was created solely for **educational and portfolio purposes** as part of an industry project.
 
-Anuja Patil
+All **Janasya** logos, branding, product images, and related assets belong to their respective owners. This repository is **not affiliated with, sponsored by, or endorsed by Janasya**.
+
+---
+
+## Author
+
+**Anuja Patil**
