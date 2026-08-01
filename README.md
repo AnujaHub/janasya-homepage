@@ -22,13 +22,13 @@ This redesign focuses on refining the existing customer experience rather than r
 - Added a **Back-to-Top** button for improved navigation
 - Improved spacing, typography, and overall UI consistency
 - Updated imagery to create a more diverse and inclusive browsing experience
-- Implemented basic SEO improvements including descriptive image alt text and better content organization
+- Implemented basic SEO improvements including descriptive image alt text and better content organization.
 
 ---
 
 ## SEO Work
 
-A structured keyword clustering exercise was carried out to improve website content organization.
+A structured keywords clustering exercise was carried out to improve website content organization.
 
 ### Workflow
 
