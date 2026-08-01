@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --font-sans: "Jost", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-devanagari: "Noto Serif Devanagari", serif;
+  --color-brand: #1a1a1a;
+  --color-brand-light: #4a4a4a;
+  --color-accent: #c8a96e;
+  --color-cream: #f5f0e8;
+  --color-surface: #f5f2ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+}
+
+.category-card:hover .category-img {
+  transform: scale(1.04);
+}
+
+/* Card & layout refinements */
+.rounded-card {
+  border-radius: 18px;
+}
+.soft-shadow {
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+}
+.label-pill {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.25));
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+/* Utility shortcuts */
+.bg-cream {
+  background-color: var(--color-cream);
+}
+.text-brand {
+  color: var(--color-brand);
+}
+.text-cream {
+  color: var(--color-cream);
+}
+.bg-accent {
+  background-color: var(--color-accent);
+}
+.hover\:text-accent:hover {
+  color: var(--color-accent);
+}
+.max-w-1400 {
+  max-width: 1400px;
+}
+.max-w-1200 {
+  max-width: 1200px;
+}
+
+.interactive-btn {
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, color 200ms ease,
+    border-color 200ms ease, opacity 200ms ease;
+}
+
+.interactive-btn:active {
+  transform: scale(0.98);
+}
+
+.interactive-btn:focus-visible {
+  outline: none;
+}
+
+.scroll-mt-28 {
+  scroll-margin-top: 7rem;
+}
+
+@media (min-width: 1024px) {
+  .scroll-mt-28 {
+    scroll-margin-top: 8.5rem;
+  }
+}

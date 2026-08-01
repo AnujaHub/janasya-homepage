@@ -1,0 +1,10 @@
+{
+  "title": "Janasya - Preview",
+  "description": "Preview site generated for local design work",
+  "language": "en",
+  "icons": { "icon": "/favicon.ico" },
+  "openGraph": { "image": "/og-image.png" },
+  "analytics": {},
+  "customScripts": {},
+  "accessibility": { "addBypassLinks": true }
+}
