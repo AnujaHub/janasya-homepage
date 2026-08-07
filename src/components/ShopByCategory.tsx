@@ -28,7 +28,7 @@ export function ShopByCategory({ onSelectCategory }: ShopByCategoryProps) {
                 <LazyImage
                   src={category.img}
                   alt={category.alt}
-                  className="category-img h-full w-full object-cover transition-transform duration-500"
+                  className="category-img h-full w-full object-cover transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-2 text-center sm:bottom-6">

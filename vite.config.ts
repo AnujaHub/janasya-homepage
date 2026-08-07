@@ -32,6 +32,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
+        'motion-dom': path.resolve(__dirname, './src/shims/motion-dom.ts'),
       },
     },
     server: {

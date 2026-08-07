@@ -1,6 +1,8 @@
 import { useCallback, useMemo, useState } from 'react'
 import { BestSellers } from '@/components/BestSellers'
 import { CartDrawer } from '@/components/drawers/CartDrawer'
+import { ABOUT } from '@/components/About'
+import { FestiveOfferPopup } from '@/components/FestiveOfferPopup'
 import { WishlistDrawer } from '@/components/drawers/WishlistDrawer'
 import { Footer } from '@/components/Footer'
 import { HeroBanner } from '@/components/HeroBanner'
@@ -163,8 +165,11 @@ export default function App() {
       />
       <main>
         <HeroBanner />
-        <TrustSection />
+
+        <ABOUT />
+
         <ShopByCategory onSelectCategory={handleNavigate} />
+
         <BestSellers
           products={displayedProducts}
           wishlistIds={wishlistIds}
@@ -175,6 +180,7 @@ export default function App() {
           onQuickView={setQuickView}
         />
         <WatchAndBuy />
+        <TrustSection />
       </main>
       <Footer onNavigate={handleNavigate} onShowToast={showToast} />
       <WhatsAppChatButton />
@@ -195,6 +201,7 @@ export default function App() {
         onRemove={removeFromCart}
         onShowToast={showToast}
       />
+      <FestiveOfferPopup />
       <ToastContainer toasts={toasts} onDismiss={dismissToast} />
     </div>
   )

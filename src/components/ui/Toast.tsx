@@ -18,7 +18,7 @@ function ToastContainerComponent({ toasts, onDismiss }: ToastContainerProps) {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`flex items-start justify-between gap-3 rounded-2xl border px-4 py-3 text-sm shadow-lg animate-[fadeIn_0.25s_ease-out] ${
+          className={`motion-pop-in flex items-start justify-between gap-3 rounded-2xl border px-4 py-3 text-sm shadow-lg ${
             toast.type === 'success'
               ? 'border-[#0ea5a4]/30 bg-white text-brand'
               : 'border-gray-200 bg-white text-brand'

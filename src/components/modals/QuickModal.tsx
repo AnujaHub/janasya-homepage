@@ -36,14 +36,14 @@ export function QuickModal({ product, onClose, onAdd }: QuickModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-60 flex items-center justify-center bg-black/50 p-4"
+      className="motion-fade-in fixed inset-0 z-60 flex items-center justify-center bg-black/50 p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="quick-view-title"
     >
       <div
-        className="w-full max-w-lg animate-[fadeIn_0.2s_ease-out] rounded-card bg-white p-4 shadow-2xl"
+        className="motion-pop-in w-full max-w-lg rounded-card bg-white p-4 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between">

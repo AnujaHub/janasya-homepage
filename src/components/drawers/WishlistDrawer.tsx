@@ -28,9 +28,9 @@ export function WishlistDrawer({ open, items, onClose, onAddToCart }: WishlistDr
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-65 bg-black/30" onClick={onClose} role="dialog" aria-modal="true" aria-label="Wishlist">
+    <div className="motion-fade-in fixed inset-0 z-65 bg-black/30" onClick={onClose} role="dialog" aria-modal="true" aria-label="Wishlist">
       <aside
-        className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white p-5 shadow-2xl"
+        className="motion-slide-in-right absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white p-5 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-gray-100 pb-4">

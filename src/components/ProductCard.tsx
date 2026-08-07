@@ -24,7 +24,7 @@ function ProductCardComponent({
         <LazyImage
           src={product.img}
           alt={`Woman wearing ${product.title}`}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <span className="absolute left-3 top-3 rounded bg-red-600 px-2 py-1 text-[11px] text-white">
           {product.discount}

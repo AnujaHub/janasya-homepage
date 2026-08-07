@@ -25,14 +25,14 @@ export function LoginModal({ open, onClose }: LoginModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-70 flex items-center justify-center bg-black/50 p-4"
+      className="motion-fade-in fixed inset-0 z-70 flex items-center justify-center bg-black/50 p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="login-title"
     >
       <div
-        className="w-full max-w-md rounded-card bg-white p-5 shadow-2xl animate-[fadeIn_0.2s_ease-out]"
+        className="motion-pop-in w-full max-w-md rounded-card bg-white p-5 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between">

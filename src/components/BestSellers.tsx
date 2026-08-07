@@ -37,16 +37,16 @@ export function BestSellers({
   }
 
   return (
-    <section id="co-ords" className="scroll-mt-28 bg-[#faf8f5] py-10 sm:py-12">
+    <section id="co-ords" className="scroll-mt-28 bg-[#faf8f5] py-8 sm:py-10">
       {PRODUCT_SECTION_ANCHORS.map((sectionId) => (
         <div key={sectionId} id={sectionId} className="scroll-mt-28" aria-hidden="true" />
       ))}
 
-      <h2 className="mb-2 text-center text-[20px] font-medium tracking-wide text-brand sm:text-[22px]">
+      <h2 className="mb-1.5 text-center text-[20px] font-medium tracking-wide text-brand sm:text-[22px]">
         BEST SELLERS
       </h2>
       {(searchTerm || activeCategoryLabel) && (
-        <p className="mb-6 text-center text-sm text-gray-500">
+        <p className="mb-5 text-center text-sm text-gray-500">
           {searchTerm
             ? `Showing results for “${searchTerm}”`
             : `Showing ${activeCategoryLabel} collection`}
@@ -63,7 +63,7 @@ export function BestSellers({
           </div>
         ) : (
           <>
-            <div className="mb-4 flex items-center justify-end gap-2">
+            <div className="mb-3 flex items-center justify-end gap-2">
               <button
                 type="button"
                 aria-label="Scroll best sellers left"
