@@ -44,6 +44,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     alt: 'Indian woman in elegant modern ethnic wear for the Janasya hero collection',
     cta: 'SHOP NOW',
     ctaTarget: 'products',
+    mobilePosition: '44% 0%',
+
   },
   {
     eyebrow: 'WORKWEAR',
@@ -53,6 +55,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     alt: 'Woman wearing refined workwear ethnic co-ord set in a premium lifestyle setting',
     cta: 'EXPLORE NOW',
     ctaTarget: 'categories',
+    mobilePosition: '50% 0%',
   },
   {
     eyebrow: 'FESTIVE',
@@ -62,6 +65,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     alt: 'Woman wearing festive ethnic style with warm editorial styling',
     cta: 'EXPLORE NOW',
     ctaTarget: 'categories',
+    mobilePosition: '28% 0%',
   },
 ]
 
@@ -69,8 +73,8 @@ export const CATEGORIES: CategoryItem[] = [
   { label: 'DRESSES', img: dressCategory, sectionId: 'dresses', alt: 'Woman wearing a graceful dress in a premium Indian ethnic fashion editorial' },
   { label: 'CO-ORDS', img: coOrdCategory, sectionId: 'co-ords', alt: 'Curvy Indian woman styled in a chic ethnic co-ord set' },
   { label: 'TOPS', img: topTunicCategory, sectionId: 'new-arrivals', alt: 'Woman wearing a modern tunic and premium everyday ethnic silhouette' },
-  { label: 'KURTAS', img: kurtaCategory, sectionId: 'kurtas', alt: 'Woman in a classic kurta set with elegant Indian styling' },
-  { label: 'SUIT SETS', img: suitSetCategory, sectionId: 'kurta-sets', alt: 'Plus-size woman wearing a soft pastel suit set with contemporary ethnic detailing' },
+  { label: 'KURTAS', img: kurtaCategory, sectionId: 'kurtas', alt: 'Plus size woman in a classic kurta set with elegant Indian styling' },
+  { label: 'SUITS', img: suitSetCategory, sectionId: 'kurta-sets', alt: 'woman wearing a soft pastel suit set with contemporary ethnic detailing' },
 ]
 
 export const PRODUCT_CATALOG: Product[] = [

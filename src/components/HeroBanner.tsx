@@ -130,7 +130,10 @@ hover:shadow-[0_12px_35px_rgba(212,175,55,0.6)]">
           alt={outgoingBackground.alt}
           eager
           aria-hidden="true"
-          className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ease-out ${transitionPhase === 0 ? 'opacity-100' : 'opacity-0'}`}
+          className={`hero-bg absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ease-out ${transitionPhase === 0 ? 'opacity-100' : 'opacity-0'}`}
+           style={{
+    '--mobile-position': outgoingBackground.mobilePosition ?? '50% top',
+  } as React.CSSProperties}
         />
       )}
       <LazyImage
@@ -138,9 +141,13 @@ hover:shadow-[0_12px_35px_rgba(212,175,55,0.6)]">
         src={currentBackground.image}
         alt={currentBackground.alt}
         eager
-        className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ease-out ${transitionPhase === 0 ? 'opacity-0' : 'opacity-100'}`}
+        className={`hero-bg absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ease-out ${transitionPhase === 0 ? 'opacity-0' : 'opacity-100'}`}
+        style={{
+    '--mobile-position': currentBackground.mobilePosition ?? '50% top',
+  } as React.CSSProperties}
+        
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/30 via-black/10 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-[32%] bg-linear-to-t from-black/65 via-black/18 to-transparent sm:hidden" />
       <div className="hero-overlay absolute inset-0" />
 

@@ -222,3 +222,10 @@ img {
     scroll-margin-top: 8.5rem;
   }
 }
+
+
+@media (max-width: 639px) {
+  .hero-bg {
+    object-position: var(--mobile-position);
+  }
+}

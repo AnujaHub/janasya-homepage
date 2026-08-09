@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
 
 const messages = [
-   "Bade Bade Celebrations Mein... Janasya Zaroori Hai!",
+   "Bade Bade Celebrations Mein Janasya Zaroori Hai!",
   "Pyaar Dosti Hai... Aur Style? Janasya Hai!",
-  "Iss Festive Season... Dil Bhi Taiyaar, Wardrobe Bhi.",
   "AW'26 Collection — Coming Soon . . .",
-  "Elegance Never Goes Out of Style.",
+  "Flat 10% Off — Shop Now!",
   " Free Shipping Across India!"
 ]
 
@@ -35,19 +34,20 @@ export function TickerBar() {
 
   return (
     <div
-      style={{
-        background: "#0D9FB3",
-color: "#FFFFFF",
-        height: "42px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "12px",
-        fontWeight: 600,
-        letterSpacing: "0.18em",
-        textTransform: "uppercase",
-        overflow: "hidden",
-      }}
+     style={{
+  background: "#0D9FB3",
+  color: "#FFFFFF",
+  height: "42px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  fontSize: "clamp(9px, 2.8vw, 12px)",
+  fontWeight: 600,
+  letterSpacing: "0.12em",
+  textTransform: "uppercase",
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+}}
     >
       <span>{text}</span>
 

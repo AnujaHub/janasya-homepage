@@ -28,6 +28,7 @@ export type HeroSlide = {
   alt: string
   cta?: string
   ctaTarget?: 'categories' | 'products'
+   mobilePosition?: string
 }
 
 export type InstagramPost = {

@@ -58,7 +58,7 @@ export function WatchAndBuy() {
 
           <div
             ref={sliderRef}
-            className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth touch-pan-x sm:gap-4"
+            className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth touch-pan-x,y sm:gap-4"
           >
             {INSTAGRAM_POSTS.map((post) => (
               <a

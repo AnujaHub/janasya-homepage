@@ -165,7 +165,7 @@ export default function App() {
       />
       <main>
         <HeroBanner />
-
+        
         <ABOUT />
 
         <ShopByCategory onSelectCategory={handleNavigate} />

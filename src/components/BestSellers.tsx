@@ -27,6 +27,7 @@ export function BestSellers({
   onQuickView,
 }: BestSellersProps) {
   const sliderRef = useRef<HTMLDivElement>(null)
+  const isSearchActive = Boolean(searchTerm.trim())
 
   const scrollSlider = (direction: 'left' | 'right') => {
     const area = sliderRef.current
@@ -84,10 +85,17 @@ export function BestSellers({
 
             <div
               ref={sliderRef}
-              className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth touch-pan-x sm:gap-4"
+              className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth touch-pan-y,x sm:gap-4"
             >
               {products.map((product) => (
-                <div key={product.id} className="min-w-[78vw] snap-start sm:min-w-70 lg:min-w-60">
+                <div
+                  key={product.id}
+                  className={
+                    isSearchActive
+                      ? 'min-w-[78vw] snap-start sm:min-w-70 lg:w-72 lg:min-w-72 lg:max-w-72 lg:flex-none'
+                      : 'min-w-[78vw] snap-start sm:min-w-70 lg:min-w-60'
+                  }
+                >
                   <ProductCard
                     product={product}
                     isWishlisted={wishlistIds.includes(product.id)}
