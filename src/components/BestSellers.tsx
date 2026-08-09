@@ -27,7 +27,7 @@ export function BestSellers({
   onQuickView,
 }: BestSellersProps) {
   const sliderRef = useRef<HTMLDivElement>(null)
-  const isSearchActive = Boolean(searchTerm.trim())
+  const isFilteredResults = Boolean(searchTerm.trim() || activeCategoryLabel)
 
   const scrollSlider = (direction: 'left' | 'right') => {
     const area = sliderRef.current
@@ -63,50 +63,52 @@ export function BestSellers({
             </p>
           </div>
         ) : (
-          <>
-            <div className="mb-3 flex items-center justify-end gap-2">
-              <button
-                type="button"
-                aria-label="Scroll best sellers left"
-                onClick={() => scrollSlider('left')}
-                className="interactive-btn flex h-10 w-10 items-center justify-center rounded-full border border-[#d3cfc6] bg-white text-lg text-brand shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                aria-label="Scroll best sellers right"
-                onClick={() => scrollSlider('right')}
-                className="interactive-btn flex h-10 w-10 items-center justify-center rounded-full border border-[#d3cfc6] bg-white text-lg text-brand shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              >
-                ›
-              </button>
-            </div>
-
-            <div
-              ref={sliderRef}
-              className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth touch-pan-y,x sm:gap-4"
-            >
-              {products.map((product) => (
-                <div
-                  key={product.id}
-                  className={
-                    isSearchActive
-                      ? 'min-w-[78vw] snap-start sm:min-w-70 lg:w-72 lg:min-w-72 lg:max-w-72 lg:flex-none'
-                      : 'min-w-[78vw] snap-start sm:min-w-70 lg:min-w-60'
-                  }
+          <div className={isFilteredResults ? 'lg:min-h-120 lg:flex lg:items-center' : ''}>
+            <div className="w-full">
+              <div className="mb-3 flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  aria-label="Scroll best sellers left"
+                  onClick={() => scrollSlider('left')}
+                  className="interactive-btn flex h-10 w-10 items-center justify-center rounded-full border border-[#d3cfc6] bg-white text-lg text-brand shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
-                  <ProductCard
-                    product={product}
-                    isWishlisted={wishlistIds.includes(product.id)}
-                    onAddToCart={onAddToCart}
-                    onWishlistToggle={onWishlistToggle}
-                    onQuickView={onQuickView}
-                  />
-                </div>
-              ))}
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  aria-label="Scroll best sellers right"
+                  onClick={() => scrollSlider('right')}
+                  className="interactive-btn flex h-10 w-10 items-center justify-center rounded-full border border-[#d3cfc6] bg-white text-lg text-brand shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  ›
+                </button>
+              </div>
+
+              <div
+                ref={sliderRef}
+                className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 scroll-smooth touch-pan-y,x sm:gap-4"
+              >
+                {products.map((product) => (
+                  <div
+                    key={product.id}
+                    className={
+                      isFilteredResults
+                        ? 'min-w-[78vw] snap-start sm:min-w-70 lg:w-72 lg:min-w-72 lg:max-w-72 lg:flex-none'
+                        : 'min-w-[78vw] snap-start sm:min-w-70 lg:min-w-60'
+                    }
+                  >
+                    <ProductCard
+                      product={product}
+                      isWishlisted={wishlistIds.includes(product.id)}
+                      onAddToCart={onAddToCart}
+                      onWishlistToggle={onWishlistToggle}
+                      onQuickView={onQuickView}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </section>
