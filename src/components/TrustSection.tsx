@@ -1,11 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Sparkles, Star } from 'lucide-react'
+import { PRODUCT_CATALOG } from '@/data/catalog'
+import type { Product } from '@/types'
+import { LazyImage } from '@/components/ui/LazyImage'
 
 type Review = {
   name: string
   initials: string
   location: string
   product: string
+  productId: number
   date: string
   review: string
 }
@@ -22,6 +26,7 @@ const REVIEWS: Review[] = [
     initials: 'PS',
     location: 'Mumbai',
     product: 'Festive Kurta Set',
+    productId: 4,
     date: 'Reviewed on 12 Jun 2026',
     review:
       'The fabric feels premium and the fit was exactly as expected. I wore it for a family function and received compliments all evening.',
@@ -31,6 +36,7 @@ const REVIEWS: Review[] = [
     initials: 'AK',
     location: 'Bangalore',
     product: 'Contour Co-ord Set',
+    productId: 2,
     date: 'Reviewed on 28 May 2026',
     review:
       'Beautifully tailored and very comfortable for a long workday. It looks refined, feels lightweight, and photographs really well.',
@@ -40,6 +46,7 @@ const REVIEWS: Review[] = [
     initials: 'MP',
     location: 'Pune',
     product: 'Minimalist Dress',
+    productId: 3,
     date: 'Reviewed on 03 Jul 2026',
     review:
       'The silhouette is elegant and the quality exceeded my expectations. It has become my go-to outfit for brunches and outings.',
@@ -49,6 +56,7 @@ const REVIEWS: Review[] = [
     initials: 'SR',
     location: 'Hyderabad',
     product: 'Maternity Comfort Set',
+    productId: 1,
     date: 'Reviewed on 19 Jun 2026',
     review:
       'Soft, breathable, and thoughtfully designed. I loved how easy it was to move in while still looking polished and put together.',
@@ -58,13 +66,18 @@ const REVIEWS: Review[] = [
     initials: 'NT',
     location: 'Delhi',
     product: 'Dark Pink Flared Kurta',
+    productId: 7,
     date: 'Reviewed on 01 Jul 2026',
     review:
       'The color is rich and the drape is lovely. It feels like an occasion piece without sacrificing everyday comfort.',
   },
 ]
 
-export function TrustSection() {
+type TrustSectionProps = {
+  onViewProduct: (product: Product) => void
+}
+
+export function TrustSection({ onViewProduct }: TrustSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
@@ -177,6 +190,11 @@ export function TrustSection() {
             className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2"
           >
             {visibleReviews.map((review, index) => (
+              (() => {
+                const product = PRODUCT_CATALOG.find((item) => item.id === review.productId)
+                if (!product) return null
+
+                return (
               <article
                 key={`${review.name}-${index}`}
                 data-review-card="true"
@@ -209,11 +227,23 @@ export function TrustSection() {
                   <p className="text-[14px] leading-7 text-[#534f49] sm:text-[15px]">{review.review}</p>
                 </div>
 
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-[#f0ebe3] pt-4 text-[12px] text-[#7b7368]">
-                  <span className="rounded-full bg-[#faf8f5] px-3 py-1">{review.product}</span>
-                  <span>{review.date}</span>
+                <div className="mt-5 flex items-center gap-3 border-t border-[#f0ebe3] pt-4">
+                  <LazyImage src={product.img} alt={product.title} className="h-14 w-11 shrink-0 rounded-lg object-cover" />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-[12px] font-medium text-brand">{review.product}</p>
+                    <p className="mt-1 text-[11px] text-[#7b7368]">{review.date}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onViewProduct(product)}
+                    className="interactive-btn shrink-0 rounded-full border border-[#0ea5a4]/35 px-3 py-2 text-[11px] font-semibold text-[#0a8e8d] transition-colors duration-200 hover:bg-[#0ea5a4] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    View Product
+                  </button>
                 </div>
               </article>
+                )
+              })()
             ))}
           </div>
 

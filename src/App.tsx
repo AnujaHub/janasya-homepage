@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { BestSellers } from '@/components/BestSellers'
 import { CartDrawer } from '@/components/drawers/CartDrawer'
+import { Donations } from './components/Donations'
 import { ABOUT } from '@/components/About'
 import { FestiveOfferPopup } from '@/components/FestiveOfferPopup'
 import { WishlistDrawer } from '@/components/drawers/WishlistDrawer'
@@ -26,6 +27,7 @@ import { filterProducts } from '@/utils/filterProducts'
 import { scrollToSection } from '@/utils/scroll'
 
 export default function App() {
+  const [isDonationsPage, setIsDonationsPage] = useState(() => window.location.pathname === '/donations')
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('janasya-cart', [])
   const [wishlist, setWishlist] = useLocalStorage<Product[]>('janasya-wishlist', [])
   const [quickView, setQuickView] = useState<Product | null>(null)
@@ -65,6 +67,18 @@ export default function App() {
 
   const dismissToast = useCallback((id: number) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }, [])
+
+  useEffect(() => {
+    const handlePopState = () => setIsDonationsPage(window.location.pathname === '/donations')
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const openDonations = useCallback(() => {
+    window.history.pushState({}, '', '/donations')
+    setIsDonationsPage(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
 
   const addToCart = useCallback(
@@ -126,6 +140,18 @@ export default function App() {
   )
 
   const handleNavigate = useCallback((sectionId: string) => {
+    if (sectionId === 'donations') {
+      openDonations()
+      return
+    }
+
+    if (sectionId === 'home' && isDonationsPage) {
+      window.history.pushState({}, '', '/')
+      setIsDonationsPage(false)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
     if (sectionId === 'dresses') {
       setCategoryFilter(undefined)
       scrollToSection('dresses')
@@ -146,7 +172,7 @@ export default function App() {
 
     setCategoryFilter(SECTION_CATEGORY_MAP[sectionId])
     scrollToSection(sectionId)
-  }, [])
+  }, [isDonationsPage, openDonations])
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans">
@@ -161,28 +187,32 @@ export default function App() {
         onOpenCart={() => setCartOpen(true)}
         onOpenWishlist={() => setWishlistOpen(true)}
         onOpenLogin={() => setLoginOpen(true)}
+        onOpenDonations={openDonations}
         onSelectCategory={handleNavigate}
       />
-      <main>
-        <HeroBanner />
-        
-        <ABOUT />
-
-        <ShopByCategory onSelectCategory={handleNavigate} />
-
-        <BestSellers
-          products={displayedProducts}
-          wishlistIds={wishlistIds}
-          searchTerm={searchTerm.trim()}
-          activeCategoryLabel={categoryFilter}
-          onAddToCart={addToCart}
-          onWishlistToggle={toggleWishlist}
-          onQuickView={setQuickView}
-        />
-        <WatchAndBuy />
-        <TrustSection />
-      </main>
-      <Footer onNavigate={handleNavigate} onShowToast={showToast} />
+      {isDonationsPage ? (
+        <main><Donations /></main>
+      ) : (
+        <>
+          <main>
+            <HeroBanner />
+            <ABOUT />
+            <ShopByCategory onSelectCategory={handleNavigate} />
+            <BestSellers
+              products={displayedProducts}
+              wishlistIds={wishlistIds}
+              searchTerm={searchTerm.trim()}
+              activeCategoryLabel={categoryFilter}
+              onAddToCart={addToCart}
+              onWishlistToggle={toggleWishlist}
+              onQuickView={setQuickView}
+            />
+            <WatchAndBuy />
+            <TrustSection onViewProduct={setQuickView} />
+          </main>
+          <Footer onNavigate={handleNavigate} onShowToast={showToast} />
+        </>
+      )}
       <WhatsAppChatButton />
       <QuickModal product={quickView} onClose={() => setQuickView(null)} onAdd={addToCart} />
       <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />

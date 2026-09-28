@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react'
+import { Gift, Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react'
 import { NAV_ITEMS, NAV_SECTION_IDS } from '@/data/catalog'
 import type { Product } from '@/types'
 import { scrollToSection } from '@/utils/scroll'
@@ -18,6 +18,7 @@ type NavbarProps = {
   onOpenCart: () => void
   onOpenWishlist: () => void
   onOpenLogin: () => void
+  onOpenDonations: () => void
   onSelectCategory: (sectionId: string) => void
 }
 
@@ -32,9 +33,9 @@ export function Navbar({
   onOpenCart,
   onOpenWishlist,
   onOpenLogin,
+  onOpenDonations,
   onSelectCategory,
 }: NavbarProps) {
-  const [scrolled, setScrolled] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -44,7 +45,6 @@ export function Navbar({
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 6)
       setShowBackToTop(window.scrollY > 360)
     }
 
@@ -143,7 +143,7 @@ className={`sticky top-0 z-50 ...`}
           </button>
           <button
             type="button"
-            onClick={() => scrollToSection('home')}
+            onClick={() => onSelectCategory('home')}
             className="interactive-btn flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5a4]/25"
           >
             <img
@@ -169,11 +169,19 @@ className={`sticky top-0 z-50 ...`}
           </button>
           <button
             type="button"
-            aria-label="Account"
-            onClick={onOpenLogin}
-            className="interactive-btn hidden h-11 items-center gap-2 rounded-full border border-transparent px-4 text-sm font-medium text-[#1d1d1d] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#f8f5ef] hover:text-[#0ea5a4] lg:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5a4]/25"
+            aria-label="Janasya Nayi Dor"
+            onClick={onOpenDonations}
+            className="interactive-btn flex h-11 w-11 items-center justify-center rounded-full border border-[#e6ddcc] bg-[#fffdf8] text-[#1d1d1d] shadow-[0_10px_22px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0ea5a4] hover:text-[#0ea5a4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5a4]/25 lg:hidden"
           >
-            <User size={16} strokeWidth={1.8} />
+            <Gift size={18} strokeWidth={1.8} />
+          </button>
+          <button
+            type="button"
+            aria-label="Janasya Nayi Dor"
+            onClick={onOpenDonations}
+            className="interactive-btn hidden h-11 w-11 items-center justify-center rounded-full border border-[#e6ddcc] bg-[#fffdf8] text-[#1d1d1d] shadow-[0_10px_22px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0ea5a4] hover:text-[#0ea5a4] lg:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5a4]/25"
+          >
+            <Gift size={18} strokeWidth={1.8} />
           </button>
           <button
             type="button"
@@ -200,6 +208,14 @@ className={`sticky top-0 z-50 ...`}
                 {cartCount}
               </span>
             )}
+          </button>
+          <button
+            type="button"
+            aria-label="Account"
+            onClick={onOpenLogin}
+            className="interactive-btn hidden h-11 w-11 items-center justify-center rounded-full border border-[#e6ddcc] bg-[#fffdf8] text-[#1d1d1d] shadow-[0_10px_22px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0ea5a4] hover:text-[#0ea5a4] lg:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5a4]/25"
+          >
+            <User size={18} strokeWidth={1.8} />
           </button>
         </div>
       </div>
@@ -245,7 +261,7 @@ className="relative h-full w-[88%] max-w-sm border-r border-[#e6ddcc] bg-[#fffdf
             <div className="flex items-center justify-between border-b border-[#e6ddcc] pb-4">
               <button
                 type="button"
-                onClick={() => scrollToSection('home')}
+                onClick={() => onSelectCategory('home')}
                 className="interactive-btn flex items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0ea5a4]/25"
               >
                 <img
@@ -264,6 +280,17 @@ className="relative h-full w-[88%] max-w-sm border-r border-[#e6ddcc] bg-[#fffdf
               </button>
             </div>
             <div className="mt-4 space-y-3">
+              <button
+                type="button"
+                onClick={() => {
+                  onOpenDonations()
+                  setMobileMenuOpen(false)
+                }}
+                className="interactive-btn flex w-full items-center justify-between rounded-[20px] border border-[#e6ddcc] bg-white px-4 py-3 text-sm font-medium text-[#1d1d1d] shadow-[0_10px_24px_rgba(17,24,39,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#0ea5a4] hover:bg-[#f8f5ef] hover:text-[#0ea5a4]"
+              >
+                <span>Janasya Nayi Dor</span>
+                <Gift size={16} strokeWidth={1.8} />
+              </button>
               <button
                 type="button"
                 aria-label="Account"

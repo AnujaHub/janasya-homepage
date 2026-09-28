@@ -60,7 +60,9 @@ export function QuickModal({ product, onClose, onAdd }: QuickModalProps) {
           </button>
         </div>
         <div className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <LazyImage src={product.img} alt={product.title} className="h-48 w-full rounded object-cover" />
+          <div className="flex h-72 items-center justify-center overflow-hidden rounded bg-[#f7f2e8] md:h-104">
+            <LazyImage src={product.img} alt={product.title} className="h-full w-full object-contain" />
+          </div>
           <div>
             <p className="font-semibold text-brand">{product.price}</p>
             <p className="text-sm text-gray-500 line-through">{product.original}</p>
